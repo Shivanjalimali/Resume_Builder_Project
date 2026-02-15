@@ -15,6 +15,6 @@ export const API_PATHS={
         UPLOAD_IMAGES:(id)=>`/api/resume/${id}/upload-images`
     },
     image:{
-        UPLOAD_IMAGES:'api/auth/upload-image'
+        UPLOAD_IMAGES:'/api/auth/upload-image'
     }
 }

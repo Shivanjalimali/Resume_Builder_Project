@@ -4,7 +4,7 @@ import { UserContext } from "../context/userContext";
 import axiosInstance from "../utils/axioInstance";
 import { API_PATHS } from "../utils/apiPaths";
 import { authStyles as styles } from "../assets/dummystyle";
-import Input from "./Inputs"; 
+import {Inputs} from "./Inputs"; 
 
 const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
@@ -57,7 +57,7 @@ const Login = ({ setCurrentPage }) => {
       </div>
       {/* FORM */}
       <form onSubmit={handleLogin} className={styles.form}>
-        <Input
+        <Inputs
           value={email}
           onChange={({target}) => setEmail(target.value)}
           label="Email"
@@ -65,7 +65,7 @@ const Login = ({ setCurrentPage }) => {
           type="email"
         />
 
-        <Input
+        <Inputs
           value={password}
           onChange={({target}) => setPassword(target.value)}
           label="Password"

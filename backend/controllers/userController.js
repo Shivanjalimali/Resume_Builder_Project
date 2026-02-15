@@ -34,7 +34,7 @@ export const registerUser=async(req,res)=>{
                 password:hashedPassword,
             }
         )
-        res.status(200).json({
+        return res.status(200).json({
             _id:user._id,
             name:user.name,
             email:user.email,
@@ -43,7 +43,7 @@ export const registerUser=async(req,res)=>{
     }
     catch(error)
     {
-        res.status(500).json({
+        return res.status(500).json({
             message:"server error",
             error:error.message
         })
@@ -57,15 +57,15 @@ export const loginUser=async(req,res)=>{
         const user=await User.findOne({email});
         if(!user)
         {
-            res.status(401).json({message:"Invalid Email Or password"});
+            return res.status(401).json({message:"Invalid Email Or password"});
         }
         //compare the passowrd
         const isMatch=await bcrypt.compare(password,user.password);
         if(!isMatch)
         {
-            res.status(500).json({message:"Invalid Email Or password"});
+            return res.status(401).json({message:"Invalid Email Or password"});
         }
-        res.status(200).json({
+        return res.status(200).json({
             _id:user._id,
             name:user.name,
             email:user.email,
@@ -75,7 +75,7 @@ export const loginUser=async(req,res)=>{
     }
     catch(error)
     {
-        res.status(500).json({
+        return res.status(500).json({
             message:"server error",
             error:error.message
         })
@@ -86,16 +86,16 @@ export const loginUser=async(req,res)=>{
 export const getUserProfile=async(req,res)=>{
     try
     {
-        const user=await User.findById('req.user.id').select("-password");
+        const user=await User.findById(req.user.id).select("-password");
         if(!user)
         {
-            res.status(404).json({message:"user not found"});
+            return res.status(404).json({message:"user not found"});
         }
-        res.json(user);
+        return res.json(user);
     }
     catch(error)
     {
-        res.status(500).json({
+        return res.status(500).json({
             message:"server error",
             error:error.message
         })

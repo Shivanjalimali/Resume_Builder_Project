@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 export const connectDB= async()=>{
-    await mongoose.connect('mongodb+srv://shivanjali7266_db_user:resume123@cluster0.k5rzglb.mongodb.net/RESUME')
+    await mongoose.connect('mongodb://127.0.0.1:27017/resumeDB')
     .then(()=>console.log("DB IS CONNECTED"));
     
 }

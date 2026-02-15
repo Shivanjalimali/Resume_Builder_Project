@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useContext } from 'react';
 import { UserContext } from '../context/userContext';
 import { useNavigate } from 'react-router-dom';
-import Input from './Inputs';
+import {Inputs }from './Inputs';
 import { validateEmail } from '../utils/helper';
 import axiosInstance from '../utils/axioInstance';
 import { API_PATHS } from '../utils/apiPaths';
@@ -60,15 +60,15 @@ const SignUp = ({setCurrentPage}) => {
         </div>
         {/* FORM */}
         <form onSubmit={handleSignUp} className={styles.signupForm}>
-            <Input value={fullName} onChange={({target})=>setFullName(target.value)}
+            <Inputs value={fullName} onChange={({target})=>setFullName(target.value)}
             label="fullName"
             placeholder="John Doe"
             type="text"/>
-            <Input value={email} onChange={({target})=>setEmail(target.value)}
+            <Inputs value={email} onChange={({target})=>setEmail(target.value)}
             label="Email"
             placeholder="email@gmail.com"
             type="email"/>
-            <Input value={password} onChange={({target})=>setPassword(target.value)}
+            <Inputs value={password} onChange={({target})=>setPassword(target.value)}
             label="password"
             placeholder="min 8 character password is required"
             type="password"/>
