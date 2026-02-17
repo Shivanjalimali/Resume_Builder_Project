@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom"
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "./context/UserContext";
 import { cardStyles } from "../assets/dummystyle";
 import { useState } from "react";
 import { Award, Check } from "lucide-react";
