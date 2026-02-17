@@ -113,25 +113,36 @@ export const getResumeById=async (req,res)=>{
 }
 
 //Update Resumes
-export const updateResume=async(req,res)=>{
+export const updateResume = async (req, res) => {
     try {
-        const resume=await Resume.findOne({
-            _id:req.params._id,
-            userId:req.user._id
-        })
-        if(!resume)
-        {
-            return res.status(404).json({message:"Resume not found or authorized"})
+        console.log("Resume ID:", req.params.id);
+        console.log("User ID from token:", req.user?._id);
+
+        const resume = await Resume.findOne({
+            _id: req.params.id,   // ✅ FIXED
+            userId: req.user._id
+        });
+
+        if (!resume) {
+            return res.status(404).json({
+                message: "Resume not found or authorized"
+            });
         }
-        //merge updated resume
-        Object.assign(resume,req.body);
-        //SAVE UPDATE RESUME
-        const savedResume=await resume.save();
-        res.json(savedResume);
+
+        Object.assign(resume, req.body);
+
+        const savedResume = await resume.save();
+
+        return res.status(200).json(savedResume);
+
     } catch (error) {
-        return res.status(404).json({message:"failed to update resume",error:error.message})  
+        return res.status(500).json({
+            message: "Failed to update resume",
+            error: error.message
+        });
     }
-}
+};
+
 //DELETE RESUME FUNCTION
 export const deleteResume = async (req, res) => {
     try {

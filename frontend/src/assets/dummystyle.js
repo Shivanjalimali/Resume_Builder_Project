@@ -380,13 +380,13 @@ export const buttonStyles = {
 };
 
 export const statusStyles = {
-  completionBadge: "inline-flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-sm font-medium text-gray-700",
+  completionBadge: "inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 justify-center",
   modalBadge: "inline-flex items-center gap-2 bg-violet-100 px-3 py-1 rounded-full text-sm font-medium text-violet-700",
   error: "flex items-center gap-3 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 px-4 py-3 rounded-xl mb-4"
 };
 
 export const iconStyles = {
-  pulseDot: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
+  pulseDot: "w-3 h-3 rounded-full bg-emerald-500 animate-pulse"
 };
 
 export const inputStyles = {

@@ -103,7 +103,7 @@ export const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) =
     </div>
   );
 };
-
+//USED IN EDIT RESUME
 export const TitleInput = ({ title, setTitle }) => {
   const [editing, setEditing] = useState(false);
   const [focused, setFocused] = useState(false);
