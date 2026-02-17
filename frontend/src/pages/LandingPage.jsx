@@ -7,7 +7,7 @@ import { Zap } from 'lucide-react'
 import { Download } from 'lucide-react'
 import Modal from '../components/Modal'
 import Login from '../components/Login'
-import { UserContext } from '../context/userContext'
+import { UserContext } from "../context/UserContext";
 import SignUp from '../components/SignUp'
 import { validateEmail } from '../utils/helper'
 const LandingPage = () => {
