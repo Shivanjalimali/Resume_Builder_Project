@@ -1,15 +1,9 @@
-Okayyy 😌 now we’ll make it PROPER — both:
 
-* 🐳 Docker run method
-* 💻 Traditional local run method
-
-Here is your improved **complete README.md file** 👇
-Clean, practical, and professional.
 
 ---
 
 ````markdown
-# 🚀 Resume Builder Project
+#  Resume Builder Project
 
 A full-stack Resume Builder web application that allows users to create, customize, and manage professional resumes online.
 
@@ -19,17 +13,17 @@ Built using React (Vite) for the frontend and Node.js/Express for the backend, w
 
 ## 🌟 Features
 
-- 🔐 User Authentication (Sign Up & Login)
-- 📝 Create, Edit, and Delete Resumes
-- 🎨 Multiple Resume Templates with Color Customization
-- 👁️ Real-Time Resume Preview
-- 📱 Fully Responsive Design
-- 🔒 Secure authentication using JWT
-- 🚀 CI/CD enabled via GitHub
+-  User Authentication (Sign Up & Login)
+-  Create, Edit, and Delete Resumes
+-  Multiple Resume Templates with Color Customization
+-  Real-Time Resume Preview
+-  Fully Responsive Design
+-  Secure authentication using JWT
+-  CI/CD enabled via GitHub
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 ## Frontend
 - React
@@ -51,13 +45,13 @@ Built using React (Vite) for the frontend and Node.js/Express for the backend, w
 
 ---
 
-# ⚙️ Running the Project
+# Running the Project
 
 You can run this project in two ways:
 
 ---
 
-# 🐳 Method 1: Run Using Docker (Recommended)
+#  Method 1: Run Using Docker (Recommended)
 
 ### 1️⃣ Pull Images from Docker Hub
 
@@ -98,7 +92,7 @@ http://localhost:5000
 
 ---
 
-# 💻 Method 2: Traditional Local Setup
+#  Method 2: Traditional Local Setup
 
 ## 1️⃣ Clone Repository
 
@@ -166,7 +160,7 @@ Backend requires:
 * JWT_SECRET
 * PORT
 
-⚠️ Never commit `.env` file to GitHub.
+ Never commit `.env` file to GitHub.
 
 ---
 
