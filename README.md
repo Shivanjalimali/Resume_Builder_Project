@@ -178,7 +178,4 @@ backend/
 Shivanjali Mali
 Full-Stack MERN Developer
 
-```
-
----
 
