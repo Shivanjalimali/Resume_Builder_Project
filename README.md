@@ -182,13 +182,3 @@ Full-Stack MERN Developer
 
 ---
 
-Now this README:
-
-✔ Shows Docker usage  
-✔ Shows traditional setup  
-✔ Shows deployment  
-✔ Looks professional  
-✔ Good for internships  
-
-If you want, I can make it even more impressive (add architecture diagram section + badges).
-```
