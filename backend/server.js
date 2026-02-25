@@ -16,7 +16,11 @@ const PORT = process.env.PORT || 4000;
 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://resume-builder-project-inky.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
@@ -26,12 +30,9 @@ app.use('/api/resume', resumeRoutes);
 // Static folder for uploads
 app.use(
   '/uploads',
-  express.static(path.join(__dirname, 'uploads'), {
-    setHeaders: (res) => {
-      res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
-    }
-  })
+  express.static(path.join(__dirname, 'uploads'))
 );
+
 
 // Test route
 app.get('/', (req, res) => {
