@@ -17,9 +17,14 @@ const PORT = process.env.PORT || 4000;
 
 
 
-app.use(
-  cors()
-);
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://resume-builder-project-inky.vercel.app"
+  ],
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
