@@ -4,6 +4,7 @@ import Resume from "../models/resumeModel.js";
 import upload from "../middleware/uploadMiddleware.js";
 
 export const uploadResumeImages = (req, res) => {
+
     upload.fields([
         { name: "thumbnail", maxCount: 1 },
         { name: "profileImage", maxCount: 1 },
@@ -11,18 +12,20 @@ export const uploadResumeImages = (req, res) => {
 
         try {
 
-            // Check Multer upload error
+            // 1. Check Multer error
             if (err) {
+                console.error("Multer error:", err);
+
                 return res.status(400).json({
                     message: "File upload failed",
                     error: err.message,
                 });
             }
 
-            // Get resume ID from URL
+            // 2. Get resume ID
             const resumeId = req.params.id;
 
-            // Find resume belonging to logged-in user
+            // 3. Find resume belonging to logged-in user
             const resume = await Resume.findOne({
                 _id: resumeId,
                 userId: req.user._id,
@@ -34,28 +37,32 @@ export const uploadResumeImages = (req, res) => {
                 });
             }
 
-            // Same uploads folder used by Multer
+            // 4. Your uploads folder is:
+            // backend/uploads
             const uploadsFolder = path.join(
                 process.cwd(),
-                "backend",
                 "uploads"
             );
 
-            // Base URL used to access uploaded images
-            const baseUrl = `${req.protocol}://${req.get("host")}/uploads`;
+            // 5. Base URL
+            const baseUrl =
+                `${req.protocol}://${req.get("host")}/uploads`;
 
-            // Get uploaded files
-            const newThumbnail = req.files?.thumbnail?.[0];
-            const newProfileImage = req.files?.profileImage?.[0];
+            // 6. Get uploaded files
+            const newThumbnail =
+                req.files?.thumbnail?.[0];
+
+            const newProfileImage =
+                req.files?.profileImage?.[0];
 
 
-            // =========================
+            // =====================================
             // HANDLE THUMBNAIL
-            // =========================
+            // =====================================
 
             if (newThumbnail) {
 
-                // Delete old thumbnail if it exists
+                // Delete old thumbnail
                 if (resume.thumbnailLink) {
 
                     const oldThumbnail = path.join(
@@ -68,15 +75,15 @@ export const uploadResumeImages = (req, res) => {
                     }
                 }
 
-                // Save new thumbnail URL in MongoDB
+                // Save new thumbnail URL
                 resume.thumbnailLink =
                     `${baseUrl}/${newThumbnail.filename}`;
             }
 
 
-            // =========================
+            // =====================================
             // HANDLE PROFILE IMAGE
-            // =========================
+            // =====================================
 
             if (newProfileImage) {
 
@@ -85,7 +92,7 @@ export const uploadResumeImages = (req, res) => {
                     resume.profileInfo = {};
                 }
 
-                // Delete old profile image if it exists
+                // Delete old profile image
                 if (resume.profileInfo.profilePreviewUrl) {
 
                     const oldProfile = path.join(
@@ -100,17 +107,17 @@ export const uploadResumeImages = (req, res) => {
                     }
                 }
 
-                // Save new profile image URL in MongoDB
+                // Save new profile image URL
                 resume.profileInfo.profilePreviewUrl =
                     `${baseUrl}/${newProfileImage.filename}`;
             }
 
 
-            // Save changes to MongoDB
+            // 7. Save resume
             await resume.save();
 
 
-            // Send successful response
+            // 8. Send response
             return res.status(200).json({
                 message: "Images uploaded successfully",
 
