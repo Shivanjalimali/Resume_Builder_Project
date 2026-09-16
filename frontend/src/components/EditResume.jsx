@@ -1473,7 +1473,13 @@ const EditResume = () => {
                         resumeId
                     ),
 
-                    formData
+                    formData,
+
+                    {
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        }
+                    }
 
                 );
 
