@@ -18,11 +18,9 @@ const PORT = process.env.PORT || 4000;
 
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://resume-builder-project-inky.vercel.app"
-  ],
-  methods: ["GET","POST","PUT","DELETE"],
+  origin: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 app.use(express.json());
@@ -47,16 +45,15 @@ app.get('/', (req, res) => {
 // ✅ START SERVER ONLY AFTER DB CONNECTS
 const startServer = async () => {
   try {
-    await connectDB(); // wait for MongoDB connection
-
-    app.listen(PORT, () => {
-      console.log(`Server started on port ${PORT}`);
-    });
-
+    await connectDB();
+    console.log("Database connected successfully");
   } catch (error) {
-    console.error('Failed to start server:', error);
-    process.exit(1);
+    console.error("Database connection error:", error.message);
   }
+
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+  });
 };
 
 startServer();

@@ -35,20 +35,19 @@ const SignUp = ({setCurrentPage}) => {
         }
         setError('');
         try {
-            const response=await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
-                name:fullName,
+            const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+                name: fullName,
                 email,
                 password
             });
-            const token=response.data;
-            if(token)
-            {
-                localStorage.setItem('token',token);
+            const { token } = response.data;
+            if (token) {
+                localStorage.setItem('token', token);
                 updateUser(response.data);
                 navigate('/dashboard');
             }
         } catch (error) {
-            setError(error.response?.data?.message||'Something went wrong. please try again')
+            setError(error.response?.data?.message || 'Something went wrong. Please try again.');
         }
     }
 

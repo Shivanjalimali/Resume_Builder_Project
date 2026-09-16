@@ -211,6 +211,7 @@ const Dashboard = () => {
           {allResumes.map((resume) => (
             <ResumeSummaryCard
               key={resume._id}
+              title={resume.title || "Untitled Resume"}
               imgUrl={resume.thumbnailLink}
               createdAt={resume.createdAt}
               updatedAt={resume.updatedAt}

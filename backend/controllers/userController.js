@@ -15,7 +15,7 @@ export const registerUser=async(req,res)=>{
         const userExists=await User.findOne({email});
         if(userExists)
         {
-            return res.status(400).json("user already exists");
+            return res.status(400).json({ message: "User already exists" });
         }
         if(password.length<8)
         {

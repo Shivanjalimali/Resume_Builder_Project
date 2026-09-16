@@ -44,6 +44,7 @@ export const ProfileInfoCard=()=>{
 // ResumeSummaryCard Component
 export const ResumeSummaryCard = ({
   title = "Untitled Resume",
+  imgUrl = null,
   createdAt = null,
   updatedAt = null,
   onSelect,
@@ -116,30 +117,38 @@ export const ResumeSummaryCard = ({
 
       {/* Preview area */}
       <div className={`${cardStyles.previewArea} bg-linear-to-br ${designColor}`}>
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className={cardStyles.emptyPreviewIcon}>
-            <Edit size={28} className="text-indigo-600" />
-          </div>
-          <span className={cardStyles.emptyPreviewText}>{title}</span>
-          <span className={cardStyles.emptyPreviewSubtext}>
-            {completion === 0 ? "Start building" : `${completion}% completed`}
-          </span>
+        {imgUrl ? (
+          <img
+            src={imgUrl}
+            alt={title}
+            className="w-full h-full object-cover object-top"
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className={cardStyles.emptyPreviewIcon}>
+              <Edit size={28} className="text-indigo-600" />
+            </div>
+            <span className={cardStyles.emptyPreviewText}>{title}</span>
+            <span className={cardStyles.emptyPreviewSubtext}>
+              {completion === 0 ? "Start building" : `${completion}% completed`}
+            </span>
 
-          {/* Mini resume sections indicator */}
-          <div className="mt-4 flex gap-2">
-            {['Profile', 'Work', 'Skills', 'Edu'].map((section, i) => (
-              <div
-                key={i}
-                className={`px-2 py-1 text-xs rounded-md ${i < Math.floor(completion / 25)
-                  ? 'bg-white/90 text-indigo-600 font-medium'
-                  : 'bg-white/50 text-gray-500'
-                  }`}
-              >
-                {section}
-              </div>
-            ))}
+            {/* Mini resume sections indicator */}
+            <div className="mt-4 flex gap-2">
+              {['Profile', 'Work', 'Skills', 'Edu'].map((section, i) => (
+                <div
+                  key={i}
+                  className={`px-2 py-1 text-xs rounded-md ${i < Math.floor(completion / 25)
+                    ? 'bg-white/90 text-indigo-600 font-medium'
+                    : 'bg-white/50 text-gray-500'
+                    }`}
+                >
+                  {section}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Hover overlay with action buttons */}
         {isHovered && (
