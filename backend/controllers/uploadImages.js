@@ -1,7 +1,11 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import Resume from "../models/resumeModel.js";
 import upload from "../middleware/uploadMiddleware.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const uploadResumeImages = (req, res) => {
 
@@ -40,8 +44,8 @@ export const uploadResumeImages = (req, res) => {
             // 4. Your uploads folder is:
             // backend/uploads
             const uploadsFolder = path.join(
-                process.cwd(),
-                "uploads"
+                __dirname,
+                "../uploads"
             );
 
             // 5. Base URL

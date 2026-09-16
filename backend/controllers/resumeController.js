@@ -1,6 +1,10 @@
 import Resume from '../models/resumeModel.js'
 import fs, { existsSync, unlinkSync } from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 export const createResume=async (req,res)=>{
     try {
         const {title}=req.body;
@@ -155,7 +159,7 @@ export const deleteResume = async (req, res) => {
             return res.status(404).json({ message: "Resume not found or authorized" });
         }
 
-        const uploadsFolder = path.join(process.cwd(), 'uploads');
+        const uploadsFolder = path.join(__dirname, '../uploads');
 
         // Delete thumbnail
         if (resume.thumbnailLink) {
