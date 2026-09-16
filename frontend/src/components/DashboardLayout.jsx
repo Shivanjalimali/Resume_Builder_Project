@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from "../context/UserContext";
 
 import Navbar from '../components/Navbar';
-import Modal from './Modal';
+import Modal from './Modal.jsx';
 const DashboardLayout = ({activeMenu,children}) => {
     const {user}=useContext(UserContext);
   return (
